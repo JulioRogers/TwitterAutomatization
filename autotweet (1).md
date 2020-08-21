@@ -330,10 +330,13 @@ while i-1<lentweets:
             time.sleep(1)
             
         if acciones == 'B' or acciones == 'C':
-            pathlike = '/html/body/div/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[' + str(i) + ']/div/div/article/div/div/div/div[2]/div[2]/div[2]/div[3]/div[3]/div/div/div[1]'
-            driver.find_element_by_xpath(pathlike).click()
-            print('se dio like al tweet de ' + username)
-            time.sleep(1)
+            try:
+                pathlike = '/html/body/div/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div[' + str(i) + ']/div/div/article/div/div/div/div[2]/div[2]/div[2]/div[3]/div[3]/div/div/div[1]'
+                driver.find_element_by_xpath(pathlike).click()
+                print('se dio like al tweet de ' + username)
+                time.sleep(1)
+            except:
+                pass
 
         i+=1
         driver.execute_script("return document.getElementsByTagName('article')[0].remove();")
